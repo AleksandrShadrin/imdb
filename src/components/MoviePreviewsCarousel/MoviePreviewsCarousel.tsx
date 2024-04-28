@@ -36,9 +36,8 @@ export default function MoviePreviewsCarousel({ movies, isLoading }: Props) {
 			{!movies || isLoading
 				? loader
 				: movies.map((m) => (
-						<Carousel.Slide>
+						<Carousel.Slide key={m.id}>
 							<MoviePreview
-								key={m.id}
 								id={m.id}
 								poster_path={m.poster_path}
 								title={m.title}
