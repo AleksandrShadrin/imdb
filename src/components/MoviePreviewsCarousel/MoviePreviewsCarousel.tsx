@@ -26,7 +26,7 @@ export default function MoviePreviewsCarousel({ movies, isLoading }: Props) {
 	return (
 		<Carousel
 			align="start"
-			slideSize={{ base: "60%", sm: "40%", lg: "20%" }}
+			slideSize={{ base: "60%", xs: "25%", lg: "20%" }}
 			slideGap="sm"
 			w="100%"
 			withControls={false}

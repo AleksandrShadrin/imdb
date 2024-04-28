@@ -103,7 +103,7 @@ export default function MovieDetails({
 							<Text size="lg" mt="auto">
 								Runtime:{" "}
 								{runtime
-									? `${runtimeHoursMinutes.hours} hours and ${runtimeHoursMinutes.minutes} minutes`
+									? `${runtimeHoursMinutes?.hours} hours and ${runtimeHoursMinutes?.minutes} minutes`
 									: "unknown"}
 							</Text>
 							<Text size="lg">{`Release date: ${release}`}</Text>
