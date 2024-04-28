@@ -24,7 +24,7 @@ export default function Movies() {
 				mt="auto"
 				mx="auto"
 				value={page}
-				onChange={(v) => setPage(v.toString())}
+				onChange={setPage}
 				total={totalPages}
 			/>
 		</Stack>

@@ -5,20 +5,18 @@ export default function usePage() {
 	let [searchParams, setSearchParams] = useSearchParams();
 
 	const page = useMemo(() => {
-		const page = searchParams.get("page");
-		if (!page) {
-			return 1;
-		}
-
-		return parseInt(page);
+		const pageParam = searchParams.get("page");
+		const parsedPage = parseInt(pageParam!, 10);
+		return Number.isNaN(parsedPage) ? 1 : parsedPage;
 	}, [searchParams]);
 
 	const setPage = useCallback(
-		(newPage: string) =>
-			setSearchParams((prev) => {
-				return { ...prev, page: newPage };
-			}),
-		[searchParams, setSearchParams]
+		(newPage: number) => {
+			const newSearchParams = new URLSearchParams(searchParams);
+			newSearchParams.set("page", newPage.toString());
+			setSearchParams(newSearchParams);
+		},
+		[setSearchParams]
 	);
 
 	return { page, setPage };
