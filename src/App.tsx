@@ -5,9 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import queryClient from "./utils/queryClient";
 
-import "@mantine/core/styles.css";
 import Root from "./pages/Root";
 import Movies from "./pages/Movies/Movies";
+import Trends from "./pages/Trends/Trends";
 
 const router = createBrowserRouter([
 	{
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: <div>Helo</div>,
+				element: <Trends />,
 			},
 			{ path: "/movies", element: <Movies /> },
 		],

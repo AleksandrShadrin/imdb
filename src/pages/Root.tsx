@@ -1,18 +1,31 @@
-import { AppShell, Flex, NavLink } from "@mantine/core";
+import { AppShell, Button, Flex, Menu, NavLink } from "@mantine/core";
 import { IconHome2 } from "@tabler/icons-react";
 import { Outlet } from "react-router-dom";
 
 export default function Root() {
 	return (
-		<AppShell header={{ height: 48 }} padding="md">
+		<AppShell header={{ height: 48 }} padding="md" miw={300}>
 			<AppShell.Header>
-				<Flex h="100%" align="center" pl="sm">
-					<NavLink
-						w={128}
-						href="/movie/123"
-						label="Movies"
-						leftSection={<IconHome2 size="1rem" stroke={1.5} />}
-					/>
+				<Flex h="100%" align="center" pl="md">
+					<Menu>
+						<Menu.Target>
+							<Button variant="default">Menu</Button>
+						</Menu.Target>
+						<Menu.Dropdown>
+							<NavLink
+								w={128}
+								href="/movies"
+								label="Movies"
+								leftSection={<IconHome2 size="1rem" stroke={1.5} />}
+							/>
+							<NavLink
+								w={128}
+								href="/"
+								label="Trends"
+								leftSection={<IconHome2 size="1rem" stroke={1.5} />}
+							/>
+						</Menu.Dropdown>
+					</Menu>
 				</Flex>
 			</AppShell.Header>
 			<AppShell.Main display="flex">

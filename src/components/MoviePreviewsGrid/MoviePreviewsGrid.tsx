@@ -1,4 +1,4 @@
-import { Box, Card, Center, Grid, SimpleGrid, Skeleton } from "@mantine/core";
+import { Box, Card, Center, SimpleGrid, Skeleton } from "@mantine/core";
 import { Movie } from "../../types";
 import MoviePreview from "../MoviePreview/MoviePreview";
 
@@ -21,7 +21,7 @@ const loader = Array(10)
 		</Center>
 	));
 
-export default function MoviePreviews({ movies, isLoading }: Props) {
+export default function MoviePreviewsGrid({ movies, isLoading }: Props) {
 	return (
 		<SimpleGrid cols={{ base: 1, xs: 2, sm: 4, md: 5 }}>
 			{!movies || isLoading

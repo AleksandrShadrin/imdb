@@ -1,7 +1,7 @@
 import { Pagination, Stack } from "@mantine/core";
 import usePage from "../../hooks/usePage";
 
-import MoviePreviews from "../../components/MoviePreviews/MoviePreviews";
+import MoviePreviewsGrid from "../../components/MoviePreviewsGrid/MoviePreviewsGrid";
 import useGetMoviesByScore from "../../queries/useGetMoviesByScore";
 
 export default function Movies() {
@@ -10,7 +10,7 @@ export default function Movies() {
 
 	return (
 		<Stack w="100%">
-			<MoviePreviews isLoading={isLoading} movies={data?.results} />
+			<MoviePreviewsGrid isLoading={isLoading} movies={data?.results} />
 			<Pagination
 				mx="auto"
 				mt="auto"
