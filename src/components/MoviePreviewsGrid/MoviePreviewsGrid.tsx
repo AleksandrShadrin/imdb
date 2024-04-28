@@ -9,8 +9,8 @@ type Props = {
 
 const loader = Array(10)
 	.fill(0)
-	.map((_) => (
-		<Center>
+	.map((_, i) => (
+		<Center key={i}>
 			<Box w="100%">
 				<Card shadow="sm" padding="sm" radius="md" withBorder>
 					<Card.Section>
@@ -27,10 +27,9 @@ export default function MoviePreviewsGrid({ movies, isLoading }: Props) {
 			{!movies || isLoading
 				? loader
 				: movies.map((m) => (
-						<Center h="100%">
+						<Center h="100%" key={m.id}>
 							<Box maw={340} h="100%" w="100%">
 								<MoviePreview
-									key={m.id}
 									id={m.id}
 									poster_path={m.poster_path}
 									title={m.title}
