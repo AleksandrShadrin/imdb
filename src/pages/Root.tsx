@@ -1,6 +1,10 @@
 import { AppShell, Box, Button, Flex, Menu, NavLink } from "@mantine/core";
 import { IconHome2, IconTrendingUp } from "@tabler/icons-react";
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import {
+	Outlet,
+	ScrollRestoration,
+	NavLink as RouterNavLink,
+} from "react-router-dom";
 
 export default function Root() {
 	return (
@@ -13,18 +17,24 @@ export default function Root() {
 								<Button variant="default">Menu</Button>
 							</Menu.Target>
 							<Menu.Dropdown>
-								<NavLink
-									w={128}
-									href="/movies"
-									label="Movies"
-									leftSection={<IconHome2 size="1rem" stroke={1.5} />}
-								/>
-								<NavLink
-									w={128}
-									href="/"
-									label="Trends"
-									leftSection={<IconTrendingUp size="1rem" stroke={1.5} />}
-								/>
+								<Menu.Item>
+									<NavLink
+										w={128}
+										to="/Movies"
+										component={RouterNavLink}
+										label="Movies"
+										leftSection={<IconHome2 size="1rem" stroke={1.5} />}
+									/>
+								</Menu.Item>
+								<Menu.Item>
+									<NavLink
+										w={128}
+										to="/"
+										label="Trends"
+										component={RouterNavLink}
+										leftSection={<IconTrendingUp size="1rem" stroke={1.5} />}
+									/>
+								</Menu.Item>
 							</Menu.Dropdown>
 						</Menu>
 					</Flex>

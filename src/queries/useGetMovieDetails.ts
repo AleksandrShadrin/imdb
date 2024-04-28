@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosClient from "../utils/mdbAxiosClient";
+import axiosClient from "../utils/tmdbAxiosClient";
 import { MovieDetailsDto } from "../types";
 
 const useGetMovieDetails = (movieId: number) =>

@@ -2,7 +2,7 @@ import { AspectRatio, Card, Image, Stack, Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./MoviePreview.module.css";
-import { getPosterUri } from "../../utils/mdbUtils";
+import { getPosterUri } from "../../utils/tmdbUtils";
 
 type Props = {
 	poster_path: string;

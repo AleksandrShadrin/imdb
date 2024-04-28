@@ -1,7 +1,6 @@
-import { ActionIcon, Stack, Title } from "@mantine/core";
+import { Stack, Title } from "@mantine/core";
 
-import { IconArrowBack } from "@tabler/icons-react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import useGetMovieDetails from "../../queries/useGetMovieDetails";
 import MoviePreviewsCarousel from "../../components/MoviePreviewsCarousel/MoviePreviewsCarousel";
@@ -9,7 +8,6 @@ import useGetSimilarMovies from "../../queries/useGetSimilarMovies";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 
 export default function Movie() {
-	const navigate = useNavigate();
 	const { id } = useParams();
 	const { data: movieDetails, isLoading: movieDetailsLoading } =
 		useGetMovieDetails(parseInt(id!));
@@ -23,6 +21,8 @@ export default function Movie() {
 				movieOverview={movieDetails?.overview}
 				movieTitle={movieDetails?.title}
 				posterPath={movieDetails?.poster_path}
+				release={movieDetails?.release_date}
+				runtime={movieDetails?.runtime}
 				isLoading={movieDetailsLoading}
 			/>
 			<Title>Similar Movies</Title>
