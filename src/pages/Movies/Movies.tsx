@@ -1,22 +1,31 @@
-import { Pagination, Stack } from "@mantine/core";
+import { Pagination, Stack, Title } from "@mantine/core";
 import usePage from "../../hooks/usePage";
 
 import MoviePreviewsGrid from "../../components/MoviePreviewsGrid/MoviePreviewsGrid";
-import useGetMoviesByScore from "../../queries/useGetMoviesByScore";
+import useGetTopMovies from "../../queries/useGetTopMovies";
+import { useEffect, useState } from "react";
 
 export default function Movies() {
 	const { page, setPage } = usePage();
-	const { data, isLoading } = useGetMoviesByScore(page);
+	const { data, isLoading } = useGetTopMovies(page);
+	const [totalPages, setTotalPages] = useState(10);
+
+	useEffect(() => {
+		if (data) {
+			setTotalPages(data?.total_pages);
+		}
+	}, [data]);
 
 	return (
-		<Stack w="100%">
+		<Stack align="start" pos="relative">
+			<Title>Best Movies</Title>
 			<MoviePreviewsGrid isLoading={isLoading} movies={data?.results} />
 			<Pagination
-				mx="auto"
 				mt="auto"
+				mx="auto"
 				value={page}
 				onChange={(v) => setPage(v.toString())}
-				total={data?.total_pages || 10}
+				total={totalPages}
 			/>
 		</Stack>
 	);

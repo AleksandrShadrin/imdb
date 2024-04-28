@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosClient from "../utils/mdbAxiosClient";
-import { ApiResponse, Movie } from "../types";
+import { ApiResponse, MovieDto } from "../types";
 
 const useGetSimilarMovies = (movieId: number) =>
-	useQuery<ApiResponse<Movie[]>, Error>({
+	useQuery<ApiResponse<MovieDto>, Error>({
 		queryKey: ["similar", movieId],
 		queryFn: async () => {
-			const { data } = await axiosClient.get<ApiResponse<Movie[]>>(
+			const { data } = await axiosClient.get<ApiResponse<MovieDto>>(
 				`/movie/${movieId}/similar`
 			);
 			return data;

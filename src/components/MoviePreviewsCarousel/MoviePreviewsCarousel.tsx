@@ -1,17 +1,17 @@
-import { Box, Card, Center, Skeleton, Stack, Title } from "@mantine/core";
-import { Movie } from "../../types";
+import { Box, Card, Skeleton } from "@mantine/core";
+import { MovieDto } from "../../types";
 import MoviePreview from "../MoviePreview/MoviePreview";
 import { Carousel } from "@mantine/carousel";
 
 type Props = {
-	movies?: Movie[];
+	movies?: MovieDto[];
 	isLoading: boolean;
 };
 
 const loader = Array(10)
 	.fill(0)
-	.map((_) => (
-		<Carousel.Slide>
+	.map((_, i) => (
+		<Carousel.Slide key={i}>
 			<Box w="100%">
 				<Card shadow="sm" padding="sm" radius="md" withBorder>
 					<Card.Section>
@@ -29,6 +29,7 @@ export default function MoviePreviewsCarousel({ movies, isLoading }: Props) {
 			slideSize={{ base: "60%", sm: "40%", lg: "20%" }}
 			slideGap="sm"
 			w="100%"
+			withControls={false}
 			loop
 			dragFree
 		>

@@ -8,6 +8,7 @@ import queryClient from "./utils/queryClient";
 import Root from "./pages/Root";
 import Movies from "./pages/Movies/Movies";
 import Trends from "./pages/Trends/Trends";
+import Movie from "./pages/Movie/Movie";
 
 const router = createBrowserRouter([
 	{
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
 				element: <Trends />,
 			},
 			{ path: "/movies", element: <Movies /> },
+			{ path: "/movie/:id", element: <Movie /> },
 		],
 	},
 ]);

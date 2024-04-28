@@ -1,9 +1,9 @@
 import { Box, Card, Center, SimpleGrid, Skeleton } from "@mantine/core";
-import { Movie } from "../../types";
+import { MovieDto } from "../../types";
 import MoviePreview from "../MoviePreview/MoviePreview";
 
 type Props = {
-	movies?: Movie[];
+	movies?: MovieDto[];
 	isLoading: boolean;
 };
 
@@ -14,7 +14,7 @@ const loader = Array(10)
 			<Box w="100%">
 				<Card shadow="sm" padding="sm" radius="md" withBorder>
 					<Card.Section>
-						<Skeleton height={400} />
+						<Skeleton height={503} />
 					</Card.Section>
 				</Card>
 			</Box>
@@ -23,7 +23,7 @@ const loader = Array(10)
 
 export default function MoviePreviewsGrid({ movies, isLoading }: Props) {
 	return (
-		<SimpleGrid cols={{ base: 1, xs: 2, sm: 4, md: 5 }}>
+		<SimpleGrid w="100%" cols={{ base: 1, xs: 2, sm: 4, md: 5 }} px={0}>
 			{!movies || isLoading
 				? loader
 				: movies.map((m) => (

@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosClient from "../utils/mdbAxiosClient";
-import { MovieDetails } from "../types";
+import { MovieDetailsDto } from "../types";
 
 const useGetMovieDetails = (movieId: number) =>
-	useQuery<MovieDetails, Error>({
+	useQuery<MovieDetailsDto, Error>({
 		queryKey: ["movie", movieId],
 		queryFn: async () => {
 			const { data } = await axiosClient.get(`/movie/${movieId}`);

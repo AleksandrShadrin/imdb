@@ -2,12 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import axiosClient from "../utils/mdbAxiosClient";
 import { MovieDto, ApiResponse } from "../types";
 
-const useGetTrendingMovies = () =>
+const useGetTopMovies = (page: number = 1) =>
 	useQuery<ApiResponse<MovieDto>, Error>({
-		queryKey: ["movies", "trending"],
+		queryKey: ["movies", "top", page],
 		queryFn: async () => {
+			const params = {
+				page,
+			};
+
 			const { data } = await axiosClient.get<ApiResponse<MovieDto>>(
-				"/trending/movie/week"
+				"/movie/top_rated",
+				{ params }
 			);
 
 			return data;
@@ -16,4 +21,4 @@ const useGetTrendingMovies = () =>
 		retry: true,
 	});
 
-export default useGetTrendingMovies;
+export default useGetTopMovies;

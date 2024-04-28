@@ -1,4 +1,4 @@
-export interface Movie {
+export interface MovieDto {
 	id: number;
 	title: string;
 	overview: string;
@@ -6,8 +6,13 @@ export interface Movie {
 	vote_average: number;
 }
 
-export interface MovieDetails extends Movie {
-	genres: Array<{ id: number; name: string }>;
+type Genre = {
+	id: number;
+	name: string;
+};
+
+export interface MovieDetailsDto extends MovieDto {
+	genres: Genre[];
 	runtime: number;
 	release_date: string;
 }

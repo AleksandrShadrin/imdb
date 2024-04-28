@@ -2,6 +2,7 @@ import { AspectRatio, Card, Image, Stack, Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./MoviePreview.module.css";
+import { getPosterUri } from "../../utils/mdbUtils";
 
 type Props = {
 	poster_path: string;
@@ -16,7 +17,7 @@ export default function MoviePreview({
 	title,
 	avg_score,
 }: Props) {
-	const imageSrc = `https://image.tmdb.org/t/p/w500${poster_path}`;
+	const imageSrc = getPosterUri(poster_path);
 	const navigate = useNavigate();
 
 	return (
@@ -31,7 +32,10 @@ export default function MoviePreview({
 		>
 			<Card.Section>
 				<AspectRatio ratio={6 / 9}>
-					<Image src={imageSrc} />
+					<Image
+						src={imageSrc}
+						fallbackSrc="https://placehold.co/400x600?text=Placeholder"
+					/>
 				</AspectRatio>
 			</Card.Section>
 
