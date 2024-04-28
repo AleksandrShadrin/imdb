@@ -1,5 +1,5 @@
 import { AppShell, Box, Button, Flex, Menu, NavLink } from "@mantine/core";
-import { IconHome2 } from "@tabler/icons-react";
+import { IconHome2, IconTrendingUp } from "@tabler/icons-react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
 export default function Root() {
@@ -23,7 +23,7 @@ export default function Root() {
 									w={128}
 									href="/"
 									label="Trends"
-									leftSection={<IconHome2 size="1rem" stroke={1.5} />}
+									leftSection={<IconTrendingUp size="1rem" stroke={1.5} />}
 								/>
 							</Menu.Dropdown>
 						</Menu>
