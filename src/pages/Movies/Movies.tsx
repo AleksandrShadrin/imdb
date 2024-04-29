@@ -8,11 +8,13 @@ import { useEffect, useState } from "react";
 export default function Movies() {
 	const { page, setPage } = usePage();
 	const { data, isLoading } = useGetTopMovies(page);
+	const [canSetPage, setCanSetPage] = useState(false);
 	const [totalPages, setTotalPages] = useState(10);
 
 	useEffect(() => {
 		if (data) {
 			setTotalPages(data?.total_pages);
+			setCanSetPage(true);
 		}
 	}, [data]);
 
@@ -26,6 +28,7 @@ export default function Movies() {
 				value={page}
 				onChange={setPage}
 				total={totalPages}
+				disabled={!canSetPage}
 			/>
 		</Stack>
 	);

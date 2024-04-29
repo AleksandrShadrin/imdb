@@ -7,7 +7,7 @@ type Props = {
 	isLoading: boolean;
 };
 
-const loader = Array(10)
+const loader = Array(20)
 	.fill(0)
 	.map((_, i) => (
 		<Center key={i}>
