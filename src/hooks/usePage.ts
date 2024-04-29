@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export default function usePage() {
-	let [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const page = useMemo(() => {
 		const pageParam = searchParams.get("page");
@@ -16,7 +16,7 @@ export default function usePage() {
 			newSearchParams.set("page", newPage.toString());
 			setSearchParams(newSearchParams);
 		},
-		[setSearchParams]
+		[searchParams, setSearchParams]
 	);
 
 	return { page, setPage };
