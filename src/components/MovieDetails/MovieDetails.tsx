@@ -9,6 +9,8 @@ import {
 	Pill,
 	Skeleton,
 	LoadingOverlay,
+	Rating,
+	Flex,
 } from "@mantine/core";
 
 import { getPosterUri, runtimeToHoursMinutes } from "../../utils/tmdbUtils";
@@ -21,6 +23,7 @@ type Props = {
 	genres?: Genre[];
 	release?: string;
 	runtime?: number;
+	rating?: number;
 	isLoading: boolean;
 };
 
@@ -74,6 +77,7 @@ export default function MovieDetails({
 	isLoading,
 	release,
 	runtime,
+	rating,
 }: Props) {
 	const posterUri = getPosterUri(posterPath);
 	const runtimeHoursMinutes = runtimeToHoursMinutes(runtime || 0);
@@ -90,8 +94,18 @@ export default function MovieDetails({
 						</AspectRatio>
 					</Grid.Col>
 					<Grid.Col span={{ base: 12, xs: 6, md: 8 }}>
-						<Stack h="100%">
+						<Stack h="100%" gap="sm">
 							<Title>{movieTitle}</Title>
+							<Flex align="center" gap="sm">
+								<Rating
+									size="lg"
+									value={rating && rating / 2}
+									fractions={8}
+									count={5}
+									readOnly
+								/>
+								<Text size="lg">{rating} / 10</Text>
+							</Flex>
 							<Group gap="sm">
 								{genres?.map((g) => (
 									<Pill bg="teal" c="white" key={g.id}>

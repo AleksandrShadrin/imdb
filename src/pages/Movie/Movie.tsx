@@ -24,6 +24,7 @@ export default function Movie() {
 				release={movieDetails?.release_date}
 				runtime={movieDetails?.runtime}
 				isLoading={movieDetailsLoading}
+				rating={movieDetails?.vote_average}
 			/>
 			<Title>Similar Movies</Title>
 			<MoviePreviewsCarousel
