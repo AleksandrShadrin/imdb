@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 export default function Movies() {
 	const { page, setPage } = usePage();
 	const { data, isLoading } = useGetTopMovies(page);
-	const [canSetPage, setCanSetPage] = useState(false);
-	const [totalPages, setTotalPages] = useState(10);
+	const [isPaginationReady, setIsPaginationReady] = useState(false);
+	const [totalPages, setTotalPages] = useState(0);
 
 	useEffect(() => {
 		if (data) {
-			setTotalPages(data?.total_pages);
-			setCanSetPage(true);
+			setTotalPages(data.total_pages);
+			setIsPaginationReady(true);
 		}
 	}, [data]);
 
@@ -22,14 +22,15 @@ export default function Movies() {
 		<Stack align="start" pos="relative">
 			<Title>Best Movies</Title>
 			<MoviePreviewsGrid isLoading={isLoading} movies={data?.results} />
-			<Pagination
-				mt="auto"
-				mx="auto"
-				value={page}
-				onChange={setPage}
-				total={totalPages}
-				disabled={!canSetPage}
-			/>
+			{isPaginationReady && (
+				<Pagination
+					mt="auto"
+					mx="auto"
+					value={page}
+					onChange={(value) => setPage(value)}
+					total={totalPages}
+				/>
+			)}
 		</Stack>
 	);
 }
